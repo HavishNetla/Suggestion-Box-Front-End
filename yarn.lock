@@ -1208,6 +1208,11 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
+"@use-it/event-listener@^0.1.2":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@use-it/event-listener/-/event-listener-0.1.4.tgz#b329783592f03f9751736f614712bdd6ab7ba4f7"
+  integrity sha512-P8pWyMUcBXVRVcCUq9xO6t5AypmQ34KVmGaRdYHRFu3iUr5Ysfk/7pykZtGjyWdk33mMvhkzcmU0iauDL3fteQ==
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -5513,6 +5518,11 @@ react-is@16.13.1, react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-persistent-state@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-persistent-state/-/react-persistent-state-1.0.0.tgz#54134f15a0b064c970003f107c034a0c18e5dfc0"
+  integrity sha512-vEcYVyvwwaDdlTlv9NSsRPmHjYPPOtAjdUotFZv/aXFpqoC0eylgRfl0lDiQ2Pur+Ux2TZms+hHAqTx/7+6w7g==
+
 react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
@@ -6612,6 +6622,13 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-persisted-state@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/use-persisted-state/-/use-persisted-state-0.3.0.tgz#f8e3d2fd8eee67e0c86fd596c3ea3e8121c07402"
+  integrity sha512-UlWEq0JYg7NbvcRBZ1g6Bwe4SEbYfr1wr/D5mrmfCzSxXSwsPRYygGLlsxHcW58Rf7gGwRPBT23sNVvyVn4WYg==
+  dependencies:
+    "@use-it/event-listener" "^0.1.2"
 
 use-subscription@1.4.1:
   version "1.4.1"

@@ -5,40 +5,49 @@ import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward'
 import ky from 'ky-universal'
+import createPersistedState from 'use-persisted-state'
 
 export default (props) => {
-	const [clicked, setClicked] = useState(false)
-	const [upvoteValue, setUpvoteValue] = useState(props.value)
+	const useClickedState = createPersistedState(`${props.id}clicked`)
 
-	let color = 'default'
-	if (props.status === 'SUBMITTED') {
-		color = 'primary'
-	} else if (props.status === 'UNDER REVIEW') {
-		color = 'secondary'
-	}
+	const [status, setStatus] = useState(props.status)
+	const [clicked, setClicked] = useClickedState(false)
+	const [value, setValue] = useState(props.value)
 
-	const handleClick = () => {
+	let upvoteValue = props.value
+	let lStatus = props.status
+
+	const handleUpvoteClick = () => {
 		setClicked(!clicked)
 
-		let value
 		if (!clicked === true) {
-			value = upvoteValue + 1
+			upvoteValue = value + 1
 		} else {
-			value = upvoteValue - 1
+			upvoteValue = value - 1
 		}
 
-		setUpvoteValue(value, () => {
-			alert(`value: ${upvoteValue}`)
-			console.log(upvoteValue)
-		})
+		setValue(upvoteValue)
 
-		// Const parsed = ky.put(
-		// 	`http://localhost:8080/suggestion/?id=${props.id}&value=${upvoteValue}`,
-		// )
+		ky.put(
+			`https://solitary-dawn-2503.fly.dev/suggestion/?id=${props.id}&value=${upvoteValue}`,
+		)
+	}
 
-		// console.log(
-		// 	`http://localhost:8080/suggestion/?id=${props.id}&value=${upvoteValue}`,
-		// )
+	const handleDoneClick = () => {
+		if (lStatus === 'PENDING') {
+			lStatus = 'COMPLETED'
+		} else {
+			lStatus = 'PENDING'
+		}
+
+		setStatus(lStatus)
+
+		console.log(
+			`https://solitary-dawn-2503.fly.dev/suggestion/status/?id=${props.id}&status=${lStatus}`,
+		)
+		ky.put(
+			`https://solitary-dawn-2503.fly.dev/suggestion/status/?id=${props.id}&status=${lStatus}`,
+		)
 	}
 
 	return (
@@ -63,7 +72,10 @@ export default (props) => {
 						<b>Category</b>: {props.category}
 					</p>
 					<p>
-						<b>Status</b>: {props.status}
+						<b>Status</b>: {status}
+					</p>
+					<p>
+						<b>Location</b>: {props.location}
 					</p>
 				</div>
 			</div>
@@ -75,15 +87,47 @@ export default (props) => {
 					color={clicked ? 'primary' : 'default'}
 					size="small"
 					endIcon={<ArrowUpwardIcon />}
-					onClick={() => handleClick()}
+					style={{ marginLeft: '10px' }}
+					onClick={() => handleUpvoteClick()}
 				>
-					{upvoteValue}
+					{value}
+				</Button>
+			</div>
+
+			<div
+				className="admin"
+				style={{ display: props.admin ? 'block' : 'none' }}
+			>
+				<h3>Admin settings</h3>
+				<Button
+					variant="contained"
+					color="secondary"
+					className="ad-but"
+					style={{ margin: '10px' }}
+					onClick={() => {
+						ky.delete(
+							`https://solitary-dawn-2503.fly.dev/suggestion/?id=${props.id}`,
+						)
+					}}
+				>
+					Delete
+				</Button>
+
+				<Button
+					variant="contained"
+					style={{ margin: '10px' }}
+					onClick={() => handleDoneClick()}
+				>
+					Switch Status
 				</Button>
 			</div>
 
 			<style jsx>{`
 				p {
 					margin: 0px;
+				}
+				h1 {
+					color: black;
 				}
 				h2 {
 					font-weight: 600;

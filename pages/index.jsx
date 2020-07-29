@@ -6,30 +6,31 @@ import ky from 'ky-universal'
 import Layout from '../components/Layout'
 
 const currencies = [
-	{ value: 'Food' },
-	{ value: 'HR' },
-	{ value: 'Stuff' },
-	{ value: 'More stuff' },
-	{ value: 'UH' },
-	{ value: 'A' },
-	{ value: 'Other' },
+	{ value: 'Kitchen' },
+	{ value: 'Bathroom' },
+	{ value: 'Office Supplies' },
+	{ value: 'Office Facilities' },
+	{ value: 'Office Decor' },
+	{ value: 'Special Request' },
 ]
 export default () => {
 	const [name, setName] = useState('')
 	const [suggestion, setSuggestion] = useState('')
 	const [category, setCategory] = useState('')
+	const [location, setLocation] = useState('')
 
 	const handleSubmit = async () => {
 		const nameParse = name.replace(' ', '+')
 		const suggestionParse = suggestion.replace(' ', '+')
 		const categoryParse = category.replace(' ', '+')
+		const locationParse = location.replace(' ', '+')
 
 		const parsed = await ky.post(
-			`http://localhost:8080/suggestion?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}`,
+			`https://solitary-dawn-2503.fly.dev/?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}&location=${locationParse}`,
 		)
 
 		console.log(
-			`http://localhost:8080/?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}`,
+			`https://solitary-dawn-2503.fly.dev//?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}`,
 		)
 	}
 
@@ -83,6 +84,15 @@ export default () => {
 								</MenuItem>
 							))}
 						</TextField>
+						<TextField
+							id="outlined-basic"
+							label="Location"
+							variant="outlined"
+							style={{ margin: '10px' }}
+							onChange={(event) => {
+								setLocation(event.target.value)
+							}}
+						/>
 					</form>
 
 					<Button
