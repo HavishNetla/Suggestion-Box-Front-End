@@ -26,11 +26,11 @@ export default () => {
 		const locationParse = location.replace(' ', '+')
 
 		const parsed = await ky.post(
-			`https://solitary-dawn-2503.fly.dev/?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}&location=${locationParse}`,
+			`https://solitary-dawn-2503.fly.dev/suggestion/?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}&location=${locationParse}`,
 		)
 
 		console.log(
-			`https://solitary-dawn-2503.fly.dev//?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}`,
+			`https://solitary-dawn-2503.fly.dev/suggestion/?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}`,
 		)
 	}
 
