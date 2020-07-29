@@ -32,6 +32,13 @@ export default () => {
 		console.log(
 			`https://solitary-dawn-2503.fly.dev/suggestion/?name=${nameParse}&suggestion=${suggestionParse}&category=${categoryParse}`,
 		)
+
+		alert('Submitted')
+
+		setName('')
+		setSuggestion('')
+		setCategory('')
+		setLocation('')
 	}
 
 	return (
@@ -51,6 +58,7 @@ export default () => {
 					<form noValidate autoComplete="off">
 						<TextField
 							id="outlined-basic"
+							value={name}
 							label="Name"
 							variant="outlined"
 							style={{ margin: '10px' }}
@@ -60,6 +68,7 @@ export default () => {
 						/>
 						<TextField
 							required
+							value={suggestion}
 							id="outlined-basic"
 							label="Suggestion"
 							variant="outlined"
@@ -86,6 +95,7 @@ export default () => {
 						</TextField>
 						<TextField
 							id="outlined-basic"
+							value={location}
 							label="Location"
 							variant="outlined"
 							style={{ margin: '10px' }}
