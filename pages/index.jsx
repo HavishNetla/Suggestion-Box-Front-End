@@ -1,7 +1,7 @@
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
 import Button from '@material-ui/core/Button'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ky from 'ky-universal'
 import Layout from '../components/Layout'
 
@@ -18,6 +18,8 @@ export default () => {
 	const [suggestion, setSuggestion] = useState('')
 	const [category, setCategory] = useState('')
 	const [location, setLocation] = useState('')
+	const [user, setUser] = useState(false)
+	const [a, setA] = useState(false)
 
 	const handleSubmit = async () => {
 		const nameParse = name.replace(' ', '+')
@@ -41,9 +43,15 @@ export default () => {
 		setLocation('')
 	}
 
+	useEffect(() => {
+		if (prompt('Enter the password') === 'c-hitUserPassword') {
+			setUser(true)
+		}
+	}, [a])
+
 	return (
 		<Layout>
-			<div style={{ textAlign: 'center' }}>
+			<div style={{ textAlign: 'center', display: user ? 'block' : 'none' }}>
 				<h1>C-HIT Suggestion Box</h1>
 
 				<div

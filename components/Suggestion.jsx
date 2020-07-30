@@ -67,7 +67,7 @@ export default (props) => {
 						<b>Date</b>: {props.date}
 					</p>
 				</div>
-				<div style={{ textAlign: 'right', width: '75%', float: 'left' }}>
+				<div style={{ textAlign: 'right', width: '70%', float: 'left' }}>
 					<p>
 						<b>Category</b>: {props.category}
 					</p>
