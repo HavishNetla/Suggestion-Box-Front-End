@@ -52,7 +52,7 @@ export default () => {
 					<Suggestion
 						key={i}
 						id={suggestion._id}
-						date="June 23rd, 2020"
+						date={suggestion.date}
 						suggestionName={suggestion.suggestion}
 						category={suggestion.category}
 						location={suggestion.location}
