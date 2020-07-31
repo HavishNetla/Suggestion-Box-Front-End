@@ -23,8 +23,18 @@ export default () => {
 
 	return (
 		<Layout>
+			<div
+				style={{
+					backgroundColor: 'white',
+					display: 'flex',
+					justifyContent: 'center',
+					marginBottom: '50px',
+				}}
+			>
+				<img src="https://www.c-hit.com/assets/icons/Logo.svg" alt="" />
+				<h1 style={{ color: 'black', paddingLeft: '50px' }}>Suggestions</h1>
+			</div>
 			<div style={{ textAlign: 'center', maxWidth: '1000px', margin: 'auto' }}>
-				<h1>Suggestions</h1>
 				<Button
 					variant="contained"
 					onClick={async () => {

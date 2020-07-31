@@ -52,7 +52,19 @@ export default () => {
 	return (
 		<Layout>
 			<div style={{ textAlign: 'center', display: user ? 'block' : 'none' }}>
-				<h1>C-HIT Suggestion Box</h1>
+				<div
+					style={{
+						backgroundColor: 'white',
+						display: 'flex',
+						justifyContent: 'center',
+						marginBottom: '50px',
+					}}
+				>
+					<img src="https://www.c-hit.com/assets/icons/Logo.svg" alt="" />
+					<h1 style={{ color: 'black', paddingLeft: '50px' }}>
+						C-HIT Suggestion Box
+					</h1>
+				</div>
 
 				<div
 					style={{

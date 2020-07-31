@@ -24,6 +24,10 @@ export default ({ children }) => (
 				background-image: url('https://forms.office.com/Images/Theme/meeting.png');
 			}
 
+			body {
+				margin: 0px;
+			}
+
 			h1 {
 				color: white;
 				font-weight: 600;
